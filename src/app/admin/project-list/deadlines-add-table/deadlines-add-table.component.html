@@ -1,0 +1,33 @@
+<h2 mat-dialog-title style="background-color: rgb(150 150 150 / 32%);height: 62px;display: flex;
+justify-content: center;align-items: center;">{{ data.item.id ? ' Update Deadlines' : 'Add Deadlines' }}</h2>
+
+<div class="container-fluid" mat-dialog-content >
+  <form >
+    <div class="form-group">
+      <label for="deadlinesName">Name</label>
+      <input type="text" class="form-control" id="deadlinesName" name="name" [(ngModel)]="data.item.name">
+    </div>
+    <div class="form-group">
+      <label for="deadlinesDDate">D.Date</label>
+      <input type="date" class="form-control" id="deadlinesDDate" name="date" [(ngModel)]="data.item.date">
+    </div>
+    <div class="form-group">
+      <label for="deadlinesStatus">Status</label>
+      <select class="form-control" id="deadlinesStatus" name="status"
+      [(ngModel)]="data.item.status" required>
+        <option *ngFor="let status of status " value="{{ status.id }}">{{ status.name }}</option>
+      </select>
+      </div>
+    <div class="form-group">
+      <label for="deadlinesPic">PIC</label>
+      <input type="text" class="form-control" id="deadlinesPic" name="pic" [(ngModel)]="data.item.pic">
+    </div>
+    <div class="form-group">
+        <div mat-dialog-actions style="align-self: center; justify-content: center;display: flex;">
+          <!-- <button mat-button mat-dialog-close class="btn btn-ok"><i class="far fa-save"></i> Lưu</button> -->
+          <button class="btn btn-primary" (click)="onSubmit()"><i class="far fa-save"></i> Submit</button>
+          <button mat-button mat-dialog-close (click)="close()"  class="btn btn-deny"><i class="fas fa-window-close"></i> Hủy bỏ</button>
+        </div>
+      </div>
+  </form>
+</div>

@@ -1,0 +1,36 @@
+::ng-deep.mat-dialog-container{
+  padding: 0 !important;
+  ::ng-deep.mat-dialog-title{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.24), 0 0 2px 0 rgba(0,0,0,.12);
+    margin: 0 !important;
+    padding: 15px 20px !important;
+    // background-image: linear-gradient(90deg,#f65e38 0,#f68a39 51%,#f65e38);
+    background-color:#79707066 !important;
+    background-size: 200% auto;
+    color: white;
+  }
+  .mat-dialog-content{
+    margin: 0 !important;
+    padding: 20px !important;
+  }
+  .mat-dialog-actions{
+    margin: 0;
+    padding: 20px;
+    float: right;
+  }
+}
+button:focus{
+  outline: 5px auto #5a84d1;
+}
+.mat-dialog-content{
+  max-height: 80vh;
+}
+.btn-primary {
+  background-color: #2929ec !important;
+}
+.demo-chip-list {
+  width: 100%;
+}
+h1 {
+  font-family: revert !important;
+}

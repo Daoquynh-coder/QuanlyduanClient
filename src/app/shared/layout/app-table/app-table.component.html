@@ -1,0 +1,101 @@
+<div class="row mb-3">
+  <span class="col-3">Tổng số {{this.itemsCount || 0}} nhân viên.</span>
+</div>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th *ngFor="let itemHeader of dataHeader; index as id" [ngStyle]="{'width' : itemHeader.width }"><span
+          (click)='itemHeader.value ? onColumnSorted(id) : null'
+          style="text-transform: uppercase; cursor: pointer;">{{itemHeader.name}}</span>
+        <button (click)='onColumnSorted(id)' [hidden]="!itemHeader.value" class="mt-1">
+          <a [ngSwitch]='sortStates[id]'>
+            <!-- <i [ngClass] ="{'fas fa fa-sort':sortStates[id] == 0,'fas fa fa-sort-up':sortStates[id] == 1,'fas fa fa-sort-down':sortStates[id] == 2}"></i> -->
+            <i *ngSwitchCase='-1' class="fas fa fa-sort float-right" style="color:#fc7b27;"></i>
+            <i *ngSwitchCase='0' class="fas fa fa-sort-up float-right" style="color:#fc7b27;"></i>
+            <i *ngSwitchCase='1' class="fas fa fa-sort-down float-right" style="color:#fc7b27;"></i>
+            <!-- <i *ngSwitchDefault class="fas fa fa-sort-down float-right" style="color:#fc7b27;"></i> -->
+          </a></button>
+      </th>
+      <th *ngIf="actions.view || actions.edit || actions.delete" style="text-align: center; width: 150px;">
+        <span translate class="text-uppercase">THAO TÁC</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td *ngIf="!dataConvert || dataConvert.length === 0"
+        [attr.colspan]="(actions.view || actions.edit || actions.delete)? dataHeader.length + 1 : dataHeader.length ">
+        Không tìm thấy dữ liệu
+      </td>
+    </tr>
+    <tr *ngFor="let item of dataConvert">
+      <td *ngFor="let itemChild of item">{{itemChild }}</td>
+      <td *ngIf="actions.view || actions.edit || actions.delete">
+        <div class="action-button">
+          <button *ngIf="actions.view" (click)="onViewItem(item)">
+            <i class="fas fa-eye" style="color:#f2724f"></i>
+          </button>
+          <button *ngIf="actions.edit" class="ml-1" (click)="onEditItem(item)">
+            <i class="fas fa-wrench" style="color: black"></i>
+          </button>
+          <button *ngIf="actions.delete" class="ml-1" (click)="onDeleteItem(item)">
+            <i class="fas fa-trash-alt" style="color:#da2727"></i>
+          </button>
+          <!-- <button *ngIf="actions.search" (click)="onSearchItem(item)">
+            <i style="color:#4d4d4d"></i>
+          </button>
+          <button *ngIf="actions.report" (click)="onReportItem(item)">
+            <i style="color:#dcc440"></i>
+          </button> -->
+
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+  <div class="align-right col-4" style="margin: auto;" *ngIf="!isError && show.page">
+    <ul class="pagination">
+      <li>
+        <button class="btn btn-light" [disabled]="!isPaging(1)" (click)="onPageLaunched(0)"
+          [ngClass]="!isPaging(1) ? 'disable-style' : ''">
+          <div>&lt;&lt;</div>
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-light" [disabled]="!isPaging(1)" (click)="onPageLaunched(1)"
+          [ngClass]="!isPaging(1) ? 'disable-style' : ''">
+          <div>&lt;</div>
+        </button>
+      </li>
+      <li [class]="convertToClass(-1)">
+        <button class="btn btn-light" (click)="onPageLaunched(2)">
+          <div>{{paginationSettings.centerDisplayedPage - 1}}</div>
+        </button>
+      </li>
+      <li [class]="convertToClass(0)">
+        <button class="btn btn-light" *ngIf="paginationSettings.totalPages > 1" (click)="onPageLaunched(3)">
+          <div>{{paginationSettings.centerDisplayedPage}}</div>
+        </button>
+      </li>
+      <li [class]="convertToClass(1)">
+        <button class="btn btn-light" *ngIf="paginationSettings.totalPages > 2" (click)="onPageLaunched(4)">
+          <div>{{paginationSettings.centerDisplayedPage + 1}}</div>
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-light" [disabled]="!isPaging(paginationSettings.totalPages)" (click)="onPageLaunched(5)"
+          [ngClass]="!isPaging(paginationSettings.totalPages) ? 'disable-style' : ''">
+          <div>&gt;</div>
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-light" [disabled]="!isPaging(paginationSettings.totalPages)" (click)="onPageLaunched(6)"
+          [ngClass]="!isPaging(paginationSettings.totalPages) ? 'disable-style' : ''">
+          <div>&gt;&gt;</div>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+</div>

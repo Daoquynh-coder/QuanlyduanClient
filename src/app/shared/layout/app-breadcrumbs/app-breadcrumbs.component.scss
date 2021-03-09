@@ -1,0 +1,16 @@
+.breadcrumb{
+  background-color: white;
+  ol{
+    list-style-type: inherit;
+    width: 100%;
+    background-color: white;
+    li{
+      font-weight: 400;
+      cursor: pointer;
+    }
+  }
+  .item-parent{
+    background-color: #f0f0f0;
+  }
+}
+

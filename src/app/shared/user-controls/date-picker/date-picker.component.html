@@ -1,0 +1,9 @@
+<div class="date-picker-container input-group">
+    <input #d="ngbDatepicker" class="form-control datetimepicker" placeholder="dd/MM/yyyy" [minDate]="{year: 1900, month: 1, day: 1}" [maxDate]="{year: 2050, month: 1, day: 1}" maxlength="10" navigation="select" [(ngModel)]="selectedDate"
+        (ngModelChange)="onModelChange($event)" ngbDatepicker (click)="!completed && d.toggle(); $event.stopPropagation();" (document:click)="closeFix($event, d)" />
+    <div class="input-group-append">
+        <button [disabled]="!editable" class="btn text-uppercase btn-outline-secondary btn-datetimepicker" (click)="!completed && d.toggle(); $event.stopPropagation();" (document:click)="closeFix($event, d)" type="button">
+            <i class="far fa-calendar-alt btn-choose-date date1"></i>
+        </button>
+    </div>
+</div>

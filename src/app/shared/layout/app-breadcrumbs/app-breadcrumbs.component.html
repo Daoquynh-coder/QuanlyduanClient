@@ -1,0 +1,13 @@
+<div
+  *ngIf="(breadCrumbs[0] && breadCrumbs[0].name) || (breadCrumbs[1] && breadCrumbs[1].name) || (breadCrumbs[2] && breadCrumbs[2].name) || (breadCrumbs[3] && breadCrumbs[3].name) || (breadCrumbs[4] && breadCrumbs[4].name)"
+  class="col-12 mb-4"><span *ngFor="let item of breadCrumbs;index as id"
+    (click)="filterWithBreadCrumbs.emit({name:item.name,id:item.id,index:id})"
+    style="cursor: pointer;color: #007bb6; text-align: left;">&nbsp;<i *ngIf="item.name && id !== 0"
+      class="fas fa-angle-right"></i>
+    {{item.name}}</span>
+</div>
+<div
+  *ngIf="(!breadCrumbs[0] || !breadCrumbs[0].name) && (!breadCrumbs[1] || !breadCrumbs[1].name) && (!breadCrumbs[2] || !breadCrumbs[2].name) && (!breadCrumbs[3] || !breadCrumbs[3].name) && (!breadCrumbs[4] || !breadCrumbs[4].name)"
+  class="col-12 mb-4">
+  <span style="cursor: pointer;color: #007bb6; text-align: left;">Tất cả tin đăng</span>
+</div>

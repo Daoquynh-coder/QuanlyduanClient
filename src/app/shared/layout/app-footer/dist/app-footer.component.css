@@ -1,0 +1,53 @@
+.app-footer {
+  width: 100%;
+  background-color: #f0f0f0;
+  height: auto;
+  border: none;
+  padding-top: 2rem;
+}
+.app-footer .container {
+  width: 80%;
+}
+.app-footer .container .container-item {
+  display: flex;
+  justify-content: space-between;
+}
+.app-footer .container .container-item .content-item {
+  font-size: 0.8rem;
+  padding-bottom: 3rem;
+}
+.app-footer .container .container-item .content-item h6 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.app-footer .container .container-item .content-item p {
+  margin-bottom: 0.5rem;
+}
+.app-footer .container .container-item .content-item ul {
+  padding: 0;
+}
+.app-footer .container .container-item .content-item ul li {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+.app-footer .container .container-item .content-item ul li i {
+  margin-right: 0.5rem;
+}
+.app-footer .container .container-item .content-item ul li img {
+  width: 30px;
+  margin-right: 0.5rem;
+}
+.app-footer .container .law {
+  font-size: 0.9rem;
+}
+.app-footer .container .law span {
+  color: #0073dd;
+}
+.app-footer .container .moreInfo {
+  font-size: 0.9rem;
+}
+.app-footer .container .moreInfo img {
+  width: 100px;
+  position: relative;
+  bottom: 0.2rem;
+}

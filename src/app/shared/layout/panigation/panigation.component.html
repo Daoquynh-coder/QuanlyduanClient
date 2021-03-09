@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="align-right col-4" style="margin: auto;">
+    <ul class="pagination">
+      <li>
+        <button class="btn btn-light" [disabled]="!isPaging(1)" (click)="onPageLaunched(0)"
+          [ngClass]="!isPaging(1) ? 'disable-style' : ''">
+          <div>&lt;&lt;</div>
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-light" [disabled]="!isPaging(1)" (click)="onPageLaunched(1)"
+          [ngClass]="!isPaging(1) ? 'disable-style' : ''">
+          <div>&lt;</div>
+        </button>
+      </li>
+      <li [class]="convertToClass(-1)">
+        <button class="btn btn-light" (click)="onPageLaunched(2)">
+          <div>{{paginationSettings.centerDisplayedPage - 1}}</div>
+        </button>
+      </li>
+      <li [class]="convertToClass(0)">
+        <button class="btn btn-light" *ngIf="paginationSettings.totalPages > 1" (click)="onPageLaunched(3)">
+          <div>{{paginationSettings.centerDisplayedPage}}</div>
+        </button>
+      </li>
+      <li [class]="convertToClass(1)">
+        <button class="btn btn-light" *ngIf="paginationSettings.totalPages > 2" (click)="onPageLaunched(4)">
+          <div>{{paginationSettings.centerDisplayedPage + 1}}</div>
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-light" [disabled]="!isPaging(paginationSettings.totalPages)" (click)="onPageLaunched(5)"
+          [ngClass]="!isPaging(paginationSettings.totalPages) ? 'disable-style' : ''">
+          <div>&gt;</div>
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-light" [disabled]="!isPaging(paginationSettings.totalPages)" (click)="onPageLaunched(6)"
+          [ngClass]="!isPaging(paginationSettings.totalPages) ? 'disable-style' : ''">
+          <div>&gt;&gt;</div>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+</div>

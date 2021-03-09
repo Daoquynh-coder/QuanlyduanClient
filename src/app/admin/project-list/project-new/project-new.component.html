@@ -1,0 +1,61 @@
+<form   #heroForm="ngForm" style="margin-left: 20px;">
+	<h4 class="titleProjectNew mt-3">{{ data.item.id ? ' Sửa dự án' : ' Thêm mới dự án' }}</h4>
+	<hr>
+	<div class="form-group">
+		<label for="projectName">Name</label>
+		<input type="text" class="form-control" id="projectName" name="name" [(ngModel)]="data.item.name" #name="ngModel"
+			style="width: 750px;" required>
+      <div [hidden]="name.valid || name.pristine"
+        class="alert alert-danger">
+          Name is required
+    </div>
+	</div>
+	<div class="form-group">
+		<label for="projectCode">Code</label>
+		<input type="text" class="form-control" id="projectCode" name="code" [(ngModel)]="data.item.code" #name="ngModel"
+			style="width: 750px;">
+	</div>
+	<div class="form-group">
+		<label for="file">Avatar</label>
+		<input type="file" class="form-control inputFileImage" id="file" #inputFileImage
+    (input)="uploadImage(inputFileImage)" accept="image/*" name="file" style="width: 105px;">
+	</div>
+	<div class="form-group">
+		<label for="projectStartDate">Start date</label>
+		<input type="date" class="form-control" id="projectStartDate" name="start_date" [(ngModel)]="data.item.start_date"
+			style="width: 500px;" required>
+	</div>
+	<div class="form-group">
+		<label for="projectPlanCloseDate">Plan close date</label>
+		<input type="date" class="form-control" id="projectPlanCloseDate" name="plan_close_date"
+			[(ngModel)]="data.item.plan_close_date" style="width: 500px;" required>
+	</div>
+	<div class="form-group">
+		<label for="projectType">Type</label>
+		<select class="form-control" id="projectType" name="type" [(ngModel)]="data.item.type" style="width: 500px;"
+			required>
+			<option *ngFor="let type of types " value="{{ type.id }}">{{ type.name }}</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="projectcontract_status">Contract_status</label>
+		<select class="form-control" id="projectcontract_status" name="contract_status"
+			[(ngModel)]="data.item.contract_status" style="width: 500px;" required>
+			<option *ngFor="let status of status " value="{{ status.id }}">{{ status.name }}</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="projectUnitPrice">Unit Price</label>
+		<input type="text" class="form-control" id="projectUnitPrice" name="unit_price" [(ngModel)]="data.item.unit_price"
+			style="width: 500px;" required>
+	</div>
+	<div class="form-group">
+		<label for="exampleFormControlTextarea1">Description</label>
+		<textarea class="form-control" id="exampleFormControlTextarea1" name="description"
+			[(ngModel)]="data.item.description" rows="3" value="" style="width: 750px;"></textarea>
+	</div>
+	<div class="form-group">
+    <button class="btn btn-primary" (click)="onSubmit()" ><i class="far fa-save"></i> {{ data.item.id ? ' Cập nhật' : 'Tạo mới' }}</button>
+    <button mat-button mat-dialog-close (click)="close()" class="btn btn-deny"><i class="fas fa-window-close"></i> Hủy bỏ</button>
+	</div>
+</form>

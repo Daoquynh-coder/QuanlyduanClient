@@ -1,0 +1,48 @@
+/*
+ * Entry point of global application style.
+ * Component-specific style should not go here and be included directly as part of the components.
+ */
+
+// Theme variables, must be included before the libraries to allow overriding defaults
+@import "theme/theme-variables";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+// 3rd party libraries
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-brands.scss";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-regular.scss";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss";
+// Theme customization
+@import "theme/theme";
+
+
+.btn-ok{
+  background-image: linear-gradient(90deg,#7ee1f3 0,#49c7e7 51%,#75dce4);
+  background-size: 200% auto;
+  box-shadow: 0 4px 12px 0 rgba(246,116,57,.4);
+  color: white;
+}
+.btn-deny{
+  color: #fc7b27;
+  background-color: white;
+  border: 0.5px solid #fc7b27 !important;
+}
+button:focus{
+  outline: none;
+}
+
+body{
+  font-family: 'Roboto';
+}
+.toast-container .ngx-toastr {
+  width: auto !important;
+}
+#news-detail{
+  .content{
+    img{
+      width: 100% !important;
+    }
+  }
+}
+
+

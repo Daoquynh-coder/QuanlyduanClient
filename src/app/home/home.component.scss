@@ -1,0 +1,736 @@
+.searchArea {
+  background-image: url("../../assets/images/dfp-venta.jpg");
+  height: 650px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  vertical-align: middle;
+
+  .searchBox {
+    background-color: rgba(72, 69, 64, .7);
+    width: 70vw;
+    margin: auto;
+    border-radius: 0.25rem;
+    margin-top: 100px;
+
+    h2 {
+      color: white;
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      ;
+    }
+
+    .searchArea-content {
+      border-radius: 30px;
+
+      .list-group {
+        background-color: rgba(59, 59, 59, .5);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: 30px;
+        margin: 2rem;
+
+
+        li {
+          flex-grow: 1;
+        }
+
+        li:hover {
+          background-color: #fc7b27 !important;
+        }
+
+        .list-group-item {
+          border-radius: 30px;
+          padding: 0.25rem;
+          margin: 0.25rem;
+          background-color: transparent;
+          border: none;
+          color: white;
+          text-align: center;
+          cursor: pointer;
+
+
+        }
+      }
+    }
+
+    .input-group {
+      padding: 0 2rem;
+
+      .form-control {
+        border-left: 1px gray solid;
+        border-style: hidden;
+      }
+
+      .input-group-append {
+        &:focus {
+          outline: none;
+        }
+
+        :hover {
+          background-color: #f6a56f !important;
+        }
+
+        span {
+          border-style: hidden;
+        }
+
+        .input-group-text {
+          padding: 0rem 2rem 0rem 2rem;
+          background-color: #fc7b27;
+          border-radius: 0px 0.25rem 0.25rem 0px !important;
+          color: #fff;
+
+          &:focus {
+            outline: none !important;
+          }
+
+          i:focus {
+            outline: none !important;
+          }
+        }
+      }
+    }
+
+    .advanceSearch {
+      padding: 0 2rem;
+      color: #fff;
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .bedrooms {
+
+        .number {
+          display: flex;
+          justify-content: space-between;
+
+          .btn {
+            border-radius: 50%;
+            border: 1px solid #fc7b27;
+            color: #fc7b27;
+            margin-right: 0.5rem;
+            height: 40px;
+          }
+
+          .btn:focus {
+            box-shadow: none;
+          }
+
+          button:hover {
+            background-color: #f6a56f !important;
+            color: white;
+          }
+
+        }
+      }
+
+      .price {
+        padding: 0;
+
+        .input-group {
+          padding: 0;
+
+          .error-message {
+            color: red;
+            margin-top: 5px;
+          }
+
+          input {
+            height: 40px;
+          }
+
+          .form-control {
+            padding: 0.4rem
+          }
+        }
+      }
+
+      .viewType {
+        p {
+          margin-left: 0.5rem;
+        }
+
+        .listAndSearch {
+          .apply-view {
+            margin-right: 0;
+            display: block;
+            text-align: center;
+            position: relative;
+            // width: 176px;
+            background: #fff;
+            border-radius: 4px;
+            left: 0.5rem;
+
+            .switch-button {
+              border-radius: 4px 0 0 4px;
+              left: 5px;
+              transition: transform .2s ease-out;
+              background: #fc7b27;
+              position: absolute;
+              height: 36px;
+              top: 5px;
+              width: 50%;
+            }
+
+            .checkbox-input {
+              visibility: hidden;
+              position: absolute;
+              left: 0;
+              top: 0;
+            }
+
+            .switch-content {
+              display: flex;
+              color: #333;
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              cursor: pointer;
+              height: 40px;
+
+              li {
+                font-weight: 400;
+                padding: 6px 0px;
+                margin: 5px;
+                user-select: none;
+                flex-grow: 1;
+                border-radius: 0.25rem;
+                width: 50px;
+
+              }
+
+            }
+
+            .active {
+              color: white;
+              background-color: #fc7b27 !important;
+              -webkit-transition-property: width height background-color font-size left top transform -webkit-transform color;
+              -webkit-transition-duration: 0.5s;
+              -webkit-transition-timing-function: ease-in-out;
+              transition-property: width height background-color font-size left top transform -webkit-transformv color;
+              transition-duration: 0.5s;
+              transition-timing-function: ease-in-out;
+            }
+          }
+
+          display: flex;
+          justify-content: space-between;
+          height: 40px;
+
+          ::ng-deep .mat-button-toggle-group {
+            height: 40px;
+            display: flex;
+
+            .mat-button-toggle {
+              width: 500px;
+            }
+          }
+
+          .btn {
+            padding: 0.5rem;
+            height: 40px;
+            background-color: #fc7b27;
+            border-radius: 0.25rem !important;
+            color: #fff;
+            flex-grow: 1;
+
+            &:focus {
+              box-shadow: none;
+              outline: none !important;
+            }
+
+          }
+
+          span:hover {
+            background-color: #f6a56f;
+          }
+
+          ::ng-deep .mat-button-toggle-button {
+            outline: none;
+          }
+        }
+
+      }
+
+
+
+    }
+
+    .toggleAdvance {
+      padding-top: 1rem;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+      outline: none;
+
+      p {
+
+
+        cursor: pointer;
+      }
+    }
+  }
+
+  ::ng-deep .mat-form-field-wrapper {
+    padding: 0;
+  }
+
+  ::ng-deep .mat-form-field {
+    background-color: #fff !important;
+    border-radius: 0.25rem 0px 0px 0.25rem !important;
+  }
+
+  ::ng-deep .mat-form-field-flex {
+    background-color: #fff !important;
+    padding: 0 !important;
+    border-radius: 0.25rem 0px 0px 0.25rem !important;
+  }
+
+  ::ng-deep .mat-select-value {
+    padding-left: 1rem;
+  }
+
+  ::ng-deep .mat-select-arrow-wrapper {
+    padding-top: 1rem
+  }
+
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+  ::ng-deep .mat-button-toggle-label-content {
+    line-height: 39px !important;
+    outline: none;
+
+    :hover {
+      border: none !important;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+
+    }
+  }
+
+  ::ng-deep .mat-button-toggle-group {
+    margin-right: 1rem;
+    ;
+  }
+}
+
+::ng-deep .mat-selected {
+  color: #fc7b27 !important;
+}
+
+// ::ng-deep .mat-select-arrow {
+//   color: #fc7b27 !important;
+// }
+
+.btnActive {
+  background-color: #fc7b27;
+  color: #fff !important;
+}
+
+.formActive {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.form-control:focus {
+  border-color: white;
+  border-left-color: #8f8f8f;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.active {
+  background-color: rgb(211 110 45 / 0.7) !important;
+}
+
+// container-info csss
+.container-info {
+  background-color: #f0f0f0;
+
+  .container {
+    width: 80%;
+
+    .info-content {
+      display: flex;
+      justify-content: space-around;
+      background-color: #ffffff;
+      box-shadow: 0 2px 11px 0 rgb(0 0 0 / 0.19);
+      margin: 0.6rem 0.6rem 0.6rem 0.6rem;
+
+      .content-item {
+        display: flex;
+        margin-right: 1rem;
+
+        .title {
+          font-size: 1.1rem;
+          font-weight: 700;
+          ;
+        }
+      }
+    }
+  }
+
+  ;
+}
+
+.mostWanted {
+  background-color: #ffffff;
+
+  .container {
+    width: 80%;
+
+    .mostWanted-content {
+
+
+      h4 {
+        font-weight: 700;
+      }
+
+      .content-list-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+
+        .title {
+          font-size: 1.25rem;
+          font-weight: 700;
+        }
+
+        div p {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+
+}
+
+////carousel-test
+.carousel-test {
+
+  // text-align: none;
+  .title {
+    margin: 0rem 0.6rem;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .tile {
+    margin: 0.5rem !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .32) !important;
+    background-color: #ffffff !important;
+    border-radius: 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .tile-img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .tile-info {
+      padding-top: 0.25rem;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .32) !important;
+      border-radius: 0 0 0.5rem 0.5rem;
+
+      img {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      ::ng-deep p {
+        text-align: inherit !important;
+        padding-bottom: 0 !important;
+      }
+
+      .title-info {
+        font-size: 0.9rem;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .location-info {
+        padding: 0 15px;
+        color: #848484;
+        font-size: 0.8rem;
+
+        p {
+          padding: 0px 0px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .price-info {
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+
+      .time-info {
+        color: #848484;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+
+  .bannerStyle div {
+    background-color: #ffffff;
+    background-size: cover !important;
+    height: 100%;
+  }
+
+  .bannerStyle img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .bannerStyle h1 {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.32);
+    color: white;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tile {
+    min-height: 200px;
+    background-color: #ccc;
+    background-size: cover !important;
+  }
+
+  .tile h1 {
+    text-align: center;
+    line-height: 200px;
+    background: rgba(0, 0, 0, 0.32);
+    color: white;
+    margin: 0;
+  }
+
+  h4 {
+    margin: 0;
+    padding: 10px 15px;
+    text-align: center;
+  }
+
+  p {
+    margin: 0;
+    padding: 0 15px 10px;
+    text-align: center;
+  }
+
+  .wBg {
+    background: white;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  nav {
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: white;
+    z-index: 12;
+  }
+
+  nav h1 {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .carBtn {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, 0.3);
+    border-radius: 999px;
+  }
+
+  .leftRs {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, 0.3);
+    border-radius: 999px;
+    left: 0;
+    cursor: pointer;
+    // :hover{
+    //   background-color: #ac6436;
+    // }
+  }
+
+  .rightRs {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, 0.3);
+    border-radius: 999px;
+    right: 0;
+    cursor: pointer;
+
+  }
+
+
+  .myPoint {
+    list-style-type: none;
+    text-align: center;
+    padding: 12px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: auto;
+    box-sizing: border-box;
+
+    li {
+      display: inline-block;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 0, 0, 0.55);
+      padding: 4px;
+      margin: 0 3px;
+      transition-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+      transition: 0.4s;
+
+      &.active1 {
+        background: #6b6b6b;
+        transform: scale(1.2);
+      }
+    }
+
+
+  }
+
+  .carouselHoved {
+    opacity: 0.4;
+  }
+
+  .myBannerPoint {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    color: beige;
+    justify-content: center;
+    list-style-type: none;
+    background: rgba(0, 0, 0, 0.34);
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+
+    li {
+      background: #6b6b6b;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+
+      &.active {
+        transform: translateY(-10px);
+        transition: .3s ease all;
+      }
+    }
+  }
+
+  .leftRs {
+    width: 40px;
+    height: 40px;
+    left: 5px;
+    background-color: white;
+  }
+
+  .leftRs:hover {
+    background-color: #fc7b27;
+    color: white;
+  }
+
+  .rightRs {
+    width: 40px;
+    height: 40px;
+    right: 5px;
+    background-color: white;
+  }
+
+  .rightRs:hover {
+    background-color: #fc7b27;
+    color: white;
+  }
+
+  .fa-chevron-left {
+    position: relative;
+    top: 20%;
+    left: 34%;
+  }
+
+  .fa-chevron-right {
+    position: relative !important;
+    top: 20% !important;
+    left: 40% !important;
+  }
+}
+
+#expansion {
+  .mat-expansion-panel {
+    background: initial;
+    border-color: initial;
+    box-shadow: 0 0 black;
+  }
+
+  .mat-expansion-panel-header {
+    padding: 0 2rem !important;
+    height: auto !important;
+    min-height: auto !important;
+    justify-content: center;
+  }
+
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 0 0 16px;
+  }
+
+  ::ng-deep .mat-expansion-indicator::after {
+    color: white;
+  }
+
+  .mat-expansion-panel-header-description {
+    flex-grow: 1 !important;
+    justify-content: center;
+  }
+
+  ::ng-deep .mat-content {
+    flex-grow: none;
+  }
+}

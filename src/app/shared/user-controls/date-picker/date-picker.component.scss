@@ -1,0 +1,31 @@
+
+.btn-datetimepicker {
+    border-left: 0;
+    border: solid 1px rgb(91,155,203)!important;
+    border-radius: 0px;
+    color: #6f8a71;
+    border-left: none!important;
+}
+.btn-datetimepicker:focus {
+    outline: none;
+}
+
+input.datetimepicker {
+    border-right: 0;
+    font-size: 14px;
+    border: solid 1px rgb(91,155,203)!important;
+    border-right: none!important;
+}
+input.form-control:not(.datetimepicker) {
+    margin: 0 12px;
+}
+.date-picker-container{
+    .dropdown-menu {
+        font-size: 14px !important;
+    }
+
+}
+
+.pointer-none {
+    pointer-events: none;
+}

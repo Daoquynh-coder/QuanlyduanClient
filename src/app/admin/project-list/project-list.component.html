@@ -1,0 +1,35 @@
+<h4 class="title mt-2 ml-3">DANH SÁCH CÁC DỰ ÁN</h4>
+<hr>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3"  *ngFor="let item of items ">
+    <div class="projectItem">
+      <a  [routerLink]="['/admin/item', item.id]">
+        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+          <div class="card-header"
+          [style.background]="item.status == 'Closed' ? '#eae8e8' : item.status == 'In progress' ? '#78d478' : null">
+            <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="John Doe" class="mr-3 rounded-circle" style="width:35px;">
+            <strong> {{ item.name }}</strong>
+          </div>
+          <div class="card-body text-secondary">
+            <p class="card-text">Size: {{ item.size }} MMs</p>
+            <p class="card-text">Price: {{ item.unit_price | number }} VND</p>
+            <p class="card-text">Total: {{ item.total | number }} VND</p>
+            <br>
+            <p class="card-text">Deadlines: {{ item.deadline }}</p>
+            <p class="card-text">Recent:</p>
+            <p class="card-text"*ngFor="let format of formatsDateTest">{{ item.recent | date: format }} {{  item.recent_name }}</p>
+            <br>
+            <p class="card-text">Members({{ item.count_resource }}):</p>
+            <p style="padding-top: 5px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;height: 24px;" class="card-text" > {{item.resource}}</p>
+          </div>
+        </div>
+       </a>
+    </div>
+    </div>
+    <div class="col-3" >
+      <div class="card border-secondary projectNew mb-3" style="max-width: 18rem; height: 286px;">
+        <a (click)="projectNew()"><i class="fa fa-plus" aria-hidden="true" style="margin-top:114px;color: black; font-size: 50px;display: flex;
+          justify-content: center;"></i></a>
+      </div>
+    </div>

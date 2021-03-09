@@ -1,0 +1,95 @@
+table{
+  thead{
+    th{
+      text-align: center;
+      background-color: #e8e8e8 !important;
+      vertical-align: middle;
+      button {
+        background: transparent;
+        border: 0;
+        float: right;
+        text-align: left;
+        color: #fc7b27;
+        width: 5px;
+        margin-left: 5px;
+      }
+      i {
+        margin-left: 0px;
+        color: lightgrey;
+        font-size: 16px;
+      }
+    }
+  }
+  tbody{
+    tr{
+      td{
+        text-align: center;
+      }
+    }
+  }
+  font-family: "Roboto";
+}
+.action-button {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-around;
+  button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+
+    i {
+      // width: 55px !important;
+      // height: 55px !important;
+      font-size: 20px;
+      margin: auto;
+    }
+    :hover {
+      border: 1px solid #fefefe;
+    }
+
+  }
+}
+.pagination {
+  /*margin: 25px 0px;*/
+  justify-content: center;
+  background-color: transparent;
+  li {
+    display: inline;
+    color: black !important;
+
+    button {
+      background-color: white !important;
+      height: 30px;
+      box-shadow: 0 -1px 4px rgba(0, 0, 0.2, 0.3);
+      border: 1px solid rgba(0, 0, 0, 0);
+      border-radius: 4px;
+      min-width:40px;
+      padding: 0px 3px;
+      text-decoration: none;
+      text-align: center;
+      margin: 3px;
+      font-size: 16px;
+
+      div {
+        color: black;
+      }
+
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+  .page-number-active button {
+    background-color: #fc7b27 !important;
+    border: none !important;
+  }
+  .page-number-active button div{
+    color: white !important;
+  }
+}
+
+

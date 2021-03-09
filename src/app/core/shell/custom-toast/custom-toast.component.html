@@ -1,0 +1,31 @@
+<div class="card" [ngSwitch]="icon">
+  <!-- <div class="card-header" [style.background-color]="backgroundColor">
+    <div class="row">
+      <div [ngSwitch]="icon">
+        <div class="col-lg-2" *ngSwitchCase=1>
+          <span class="fas fa-check"></span>
+        </div>
+        <div class="col-lg-2" *ngSwitchCase=2>
+          <span class="far fa-times-circle"></span>
+        </div>
+        <div class="col-lg-2" *ngSwitchDefault>
+          <span class="fas fa-exclamation-triangle"></span>
+        </div>
+      </div>
+      <div class="col-lg-10">
+        <h5>{{title | translate}}</h5>
+      </div>
+    </div>
+  </div> -->
+  <div class="message text-center" *ngSwitchCase=1>
+    <p [innerHTML]="message | translate"></p>
+  </div>
+
+  <div class="message text-center danger" *ngSwitchCase=2>
+    <p [innerHTML]="message | translate"></p>
+  </div>
+
+  <div class="message text-center bg-success text-white" *ngSwitchDefault>
+    <p [innerHTML]="message | translate"></p>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<h2 mat-dialog-title style="background-color: rgb(150 150 150 / 32%);height: 62px;display: flex;
+justify-content: center;align-items: center;">{{ data.item.id ? ' Update Estimation' : 'Add Estimation' }}</h2>
+
+<div class="container-fluid" mat-dialog-content id="estimationAdd">
+  <div mat-dialog-content id="estimationAdd">
+    <form>
+      <div class="form-group">
+        <label for="estimationName">Name</label>
+        <input type="text" class="form-control" id="estimationName" name="name" [(ngModel)]="data.item.name">
+      </div>
+      <div class="form-group">
+        <label for="estimationDate">Date</label>
+        <input type="date" class="form-control" id="estimationDate" name="date" [(ngModel)]="data.item.date">
+      </div>
+      <div class="form-group">
+        <label for="estimationStatus">Effort</label>
+        <input type="text" class="form-control" id="estimationStatus" name="effort" [(ngModel)]="data.item.effort">
+      </div>
+      <div class="form-group">
+        <label for="estimationsPic">Unit price</label>
+        <input type="text" class="form-control" id="estimationPic" [value] name="unit_price" [(ngModel)]="data.item.unit_price">
+      </div>
+      <div class="form-group">
+        <label id="uu" for="estimationTotal"> Total: </label>
+        <input type="text" class="form-control" id="estimationTotal" name="estimationTotal" [value]="data.item.effort * data.item.unit_price" [(ngModel)]="data.item.total" >
+      </div>
+      <div class="form-group">
+        <div mat-dialog-actions style="align-self: center; justify-content: center;display: flex;">
+          <button class="btn btn-primary" (click)="onSubmit()"><i class="far fa-save"></i> Submit</button>
+          <button mat-button mat-dialog-close (click)="close()"  class="btn btn-deny"><i class="fas fa-window-close"></i> Hủy bỏ</button>
+        </div>
+      </div>
+    </form>
+</div>
+
+

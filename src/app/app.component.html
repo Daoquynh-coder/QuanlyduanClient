@@ -1,0 +1,16 @@
+<!-- <app-breadcrumbs></app-breadcrumbs> -->
+<menu-admin *ngIf="authenticationService.credentials && authenticationService.credentials.role_id !== 2"></menu-admin>
+<div
+  [class]="(!authenticationService.credentials || authenticationService.credentials.role_id === 2) ? ('pageinner' + (this.location.path() === '/danh-sach-tin' ? ' main-page':'')) : ('pageinner hidden' + (this.location.path() === '/danh-sach-tin' ? ' main-page':''))">
+  <app-header></app-header>
+  <router-outlet>
+  </router-outlet>
+</div>
+
+<!-- <div [class]="('pageinner' + (this.location.path() === '/danh-sach-tin' ? ' main-page':''))">
+  <router-outlet>
+  </router-outlet>
+</div> -->
+<ng4-loading-spinner [threshold]="0" [template]="template"></ng4-loading-spinner>
+<!-- <app-footer *ngIf="(!authenticationService.credentials || authenticationService.credentials.role_id === 2)">
+</app-footer> -->

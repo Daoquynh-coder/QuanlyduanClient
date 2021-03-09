@@ -1,0 +1,65 @@
+.app-footer {
+  width: 100%;
+  background-color: #f0f0f0;
+  height: auto;
+  border: none;
+  padding-top: 2rem;
+
+  .container {
+    width: 80%;
+    .container-item {
+      display: flex;
+      justify-content: space-between;
+
+      .content-item {
+        font-size: 0.8rem;
+        padding-bottom: 3rem;
+
+        .content-item-text-title {
+          font-size: 1rem;
+        }
+
+        h6 {
+          margin-bottom: 1rem;
+          font-weight: 700;
+        }
+
+        p {
+          margin-bottom: 0.5rem;
+        }
+
+        ul {
+          padding: 0;
+
+          li {
+            list-style: none;
+            margin-top: 0.5rem;
+
+            i {
+              margin-right: 0.5rem;
+            }
+
+            img {
+              width: 30px;
+              margin-right: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+    .law {
+      font-size: 0.9rem;
+      span {
+        color: #0073dd;
+      }
+    }
+    .moreInfo {
+      font-size: 0.9rem;
+      img {
+        width: 100px;
+        position: relative;
+        bottom: 0.2rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+// .card-header {
+//   background: linear-gradient(to right, #7fc430 0%, #26ad60 100%);
+// }
+
+.container {
+  position: absolute;
+}
+
+.card {
+  border-radius: none !important;
+  float: right;
+  position: relative;
+  border: none;
+  bottom: 1rem;
+  // -webkit-animation-name: toast;
+  /* Safari 4.0 - 8.0 */
+  // -webkit-animation-duration: 5s;
+  /* Safari 4.0 - 8.0 */
+  // animation-name: toast;
+  // animation-duration: 4s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card:hover {
+  box-shadow: 0 0 12px #000000;
+  opacity: 1;
+  cursor: pointer;
+}
+
+p {
+  margin-top: 16px;
+  color: #aea886;
+}
+
+.message {
+  // border-radius: 0.4rem;
+  // background-color: #BD362F;
+}
+
+.danger {
+  background-color: #BD362F;
+}
+
+@keyframes toast {
+  0% {
+    opacity: .2;
+    margin: 0 105px;
+    bottom: -15em;
+  }
+
+  30% {
+    opacity: 1;
+    margin: 0 105px;
+    bottom: 0em;
+  }
+}

@@ -1,0 +1,22 @@
+<div #container class="option-box-containter" [style.width]="width">
+  <div [ngClass] = "{'appearence-div': true, 'css-disabled': disabled}">
+    <!--  [focus] ="onfocusEvent"  (focusout)="focusOutFunction()" -->
+    <button class="btn"  (click) = "onOptionShow()" [disabled] = "disabled" pimsTooltip>
+      <div class = "button-inside">
+        <span  [class.active] = "(firstBlank && selectedIndex > 0) || (!firstBlank && selectedIndex >= 0)" >{{selectedText | translate}}</span> <!--N11PIMS-3204-->
+        <i class="fa fas fa-sort-down"></i>
+        <!-- <i class="fa fas fa-sort-up"  *ngIf = "optionShowed"></i> -->
+      </div>
+    </button>
+  </div>
+  <div [class.non-displayed] = "!optionShowed" class="option-box-border-none">
+    <div #dropdownBox class = "options-list">
+      <div
+        *ngFor = "let item of optionTexts, index as i"
+        (click) = "onOptionClicked(i)"
+        [class.item-active] = "i == selectedIndex || i == focusedIndex">
+        <span class = "item-text" pimsTooltip>{{item.text | translate}}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+.titleProject {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.titleProject:hover {
+  color: gray;
+}
+.center {
+  text-align: center !important;
+  width: 175px;
+}
+.start {
+  text-align: start;
+}
+td.end, th.end {
+  text-align: end !important;
+}
+td.name , th.name {
+  width: 240px;
+}
+
+.table {
+  font-family: revert !important;
+}
+.buttonMenu {
+  border: none;
+  background-color: inherit;
+  font-size: 35px;
+}
+.action {
+  width: 125px;
+  // justify-items: end;
+  max-width: 125px;
+  text-align: center !important;
+}
+td.index {
+  width: 100px;
+}
+td.right , th.right {
+  width: 200px;
+  text-align: end !important;
+}
+td.icon {
+  width: 125px !important;
+  text-align: center !important;
+}
+td.status, th.status, td.pic, th.pic {
+  text-align: center !important;
+  // width: 300px;
+}
+tr.text-align {
+  text-align: center !important;
+}

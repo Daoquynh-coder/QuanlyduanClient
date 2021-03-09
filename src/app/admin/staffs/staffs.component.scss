@@ -1,0 +1,37 @@
+.w-75{
+  max-width: 55px;
+  color: rgba(0,0,0,.87);
+}
+
+.w-100{
+  width: 100px;
+}
+.mat-cell {
+  justify-content: center;
+
+}
+mat-header-cell{
+  background-color: #becbd6 !important;
+  font-size: 15px;
+}
+.mat-name,.mat-username, .mat-tk {
+  justify-content: start !important;
+  padding-left: 20px !important;
+  color: rgba(0,0,0,.87);
+
+}
+
+.mat-phantram, .mat-header-phantram, .mat-joined_date, .mat-status {
+    width: 43px;
+    display: flex;
+    justify-content: flex-end !important;
+    color: rgba(0,0,0,.87);
+}
+.mat-phantram {
+  padding-right: 20px;
+}
+.button {
+  border: none !important;
+  background-color: white !important;
+  font-size: 20px !important;
+}

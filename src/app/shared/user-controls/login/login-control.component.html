@@ -1,0 +1,53 @@
+<div class="mdl onboarding login"
+  *ngIf="statusDisplayForgotPass === false && statusDisplaySignup === false; else displayForgotPassScr">
+  <b style="font-size: 1.5rem;">Đăng nhập vào tài khoản của bạn</b>
+  <div>
+    <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+      <div class="nvt-input-container undefined">
+        <label>Username</label>
+        <div class="nvt-input">
+          <input formControlName="username" type="text" name="email" placeholder="Nhập email/số điện thoại" required
+            value="" />
+        </div>
+      </div>
+      <mat-error *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">Cần phải nhập Email/số điện thoại</div>
+      </mat-error>
+
+      <div class="nvt-input-container undefined">
+        <label>Password</label>
+        <div class="nvt-input-password">
+          <input name="password" [type]="statusHideShowPass ? 'text' : 'password'" placeholder="Nhập mật khẩu"
+            formControlName="password" value="" /><span (click)="handleHideShowPassword()" class="show-password">{{
+            statusHideShowPass ? "Ẩn" : "Hiển thị" }} mật khẩu</span>
+        </div>
+      </div>
+      <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Cần phải nhập mật khẩu</div>
+        <div *ngIf="f.password.errors.minlength">Mật khẩu ít nhất 4 ký tự</div>
+      </mat-error>
+      <!-- <div class="btn-link recovery-btn" (click)="handleDisplayForgotPassScr()"><span> Lấy lại mật khẩu </span></div> -->
+      <div class="nvt-input-container submit">
+        <input class="btn-primary" type="submit" value="Đăng nhập" />
+      </div>
+    </form>
+    <div class="switch-form">
+      <!-- <p>Chưa có tài khoản? <span (click)="handleDisplaySignupScr()">đăng ký ngay!</span></p> -->
+    </div>
+  </div>
+  <i (click)="handleCloseModal()" class="close-icon fas fa-times"></i>
+</div>
+
+<ng-template #displayForgotPassScr>
+  <ng-container *ngIf="statusDisplayForgotPass && statusDisplaySignup === false; else displaySignupScr">
+    <app-forgot-password [checkRenderTextTitle]="true" titleName="Tạo mật khẩu mới"></app-forgot-password>
+  </ng-container>
+</ng-template>
+
+<ng-template #displaySignupScr>
+  <ng-container *ngIf="statusDisplaySignup">
+    <app-register></app-register>
+  </ng-container>
+</ng-template>
+
+

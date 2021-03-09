@@ -1,0 +1,68 @@
+<h4 class="title ml-3 mt-3">DANH SÁCH NHÂN VIÊN</h4>
+<hr>
+  <button type="button" class="btn btn-success ml-3" (click)="openAprrovalDialog()">
+    <i class="fa fa-plus " aria-hidden="true" style="color: #f3fdf5;"></i>
+    Thêm mới
+  </button>
+<div class="container-fluid mt-3">
+
+  <div class="body mt-2" style="background-color: white;" >
+    <!-- <app-table [dataHeader]="header" [dataTable]="staff" [actions]="actions" [paginationSettings]="paginationSettings"
+      [itemsCount]="itemsCount"  style=" width: 100%" (onActionEdit)="updateStaff($event)" (onAction)="deleteStaff($event)">
+    </app-table> -->
+    <span>Tổng số {{ length }} nhân viên.</span>
+    <div class="mat-elevation-z8">
+      <mat-table matSort  [dataSource]="listData" [ngClass]="'table-bordered'">
+        <ng-container matColumnDef="fullName">
+          <mat-header-cell [ngClass]="'w-75'" *matHeaderCellDef >STT</mat-header-cell>
+          <mat-cell style=" justify-content: center;" [ngClass]="'w-75'" *matCellDef="let element; let i = index;">{{ i + 1}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Tk">
+          <mat-header-cell [ngClass]="'mat-tk'" *matHeaderCellDef mat-sort-header>TK</mat-header-cell>
+          <mat-cell [ngClass]="'mat-username'" *matCellDef="let element">{{ element.username}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Họ và tên">
+          <mat-header-cell [ngClass]="'mat-tk'" *matHeaderCellDef mat-sort-header>Họ và tên</mat-header-cell>
+          <mat-cell [ngClass]="'mat-name'" *matCellDef="let element">{{ element.name}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="joined_date">
+          <mat-header-cell [ngClass]="'mat-cell'" *matHeaderCellDef >Ngày vào công ty</mat-header-cell>
+          <mat-cell [ngClass]="'mat-joined_date'" *matCellDef="let element">{{ element.joined_date | date:'dd/MM/yyyy' }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status" >
+          <mat-header-cell [ngClass]="'mat-cell'" *matHeaderCellDef>Số năm kinh nghiệm</mat-header-cell>
+          <mat-cell  [ngClass]="'mat-status'" *matCellDef="let element">{{ element.status}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="skills">
+          <mat-header-cell [ngClass]="'mat-cell'" *matHeaderCellDef >Skills</mat-header-cell>
+          <mat-cell [ngClass]="'mat-cell'" *matCellDef="let element">{{ element.skills}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="join_projects" >
+          <mat-header-cell [ngClass]="'mat-cell'" *matHeaderCellDef>Dự án đang tham gia</mat-header-cell>
+          <mat-cell  [ngClass]="'mat-cell'" *matCellDef="let element">{{ element.join_projects}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="busy_rate" >
+          <mat-header-cell [ngClass]="'mat-header-phantram'" *matHeaderCellDef mat-sort-header>Phần trăm(%)</mat-header-cell>
+          <mat-cell [ngClass]="'mat-phantram'"  *matCellDef="let element">{{ element.busy_rate}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell [ngClass]="'mat-cell'" *matHeaderCellDef></mat-header-cell>
+          <mat-cell [ngClass]="'mat-cell'" *matCellDef="let row;">
+            <button [ngClass]="'button'" mat-icon-button (click)="updateStaff(row)" >
+              <i class="far fa-edit"></i>
+            </button>
+            <button [ngClass]="'button'" mat-icon-button (click)="deleteStaff(row.id)" >
+              <i style="color: red;" class="far fa-trash-alt"></i>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+      <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+    </div>
+
+  </div>
+</div>

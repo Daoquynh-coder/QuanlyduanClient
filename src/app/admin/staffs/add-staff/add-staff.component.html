@@ -1,0 +1,77 @@
+
+<nav class="navbar fixed-top navbar-light bg-faded"  mat-dialog-title style="font-family: revert !important;">
+  <p class="navbar-brand" href="#">{{ data.item.id ? ' Update nhân viên' : 'Add nhân viên' }}</p>
+</nav>
+<div mat-dialog-content id="staffAddNew">
+  <form class="needs-validation"  (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="staffUsername">username</label>
+      <input type="text" class="form-control"  name="staffUsername"  [(ngModel)]="data.item.username" id="staffUsername" required>
+    </div>
+
+    <div class="form-group">
+      <label for="staffName">Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="data.item.name" id="staffName" required>
+    </div>
+    <div class="form-group">
+      <label for="staffPassword">Password</label>
+      <input [disabled]="data.item.id ? true : null" type="password" class="form-control" name="password" [(ngModel)]="data.item.password" id="staffPassword" required>
+    </div>
+    <div class="form-group">
+      <label for="staffJoinedDate">Joined date</label>
+      <input type="date" class="form-control" name="joined_date" [(ngModel)]="data.item.joined_date" id="staffJoinedDate">
+    </div>
+    <div class="form-group">
+      <label for="staffStatus">Status</label>
+      <select class="form-control" id="staffStatus" name="status"  [(ngModel)]="data.item.status"  style="width: 100%;">
+        <option *ngFor="let status of status" value="{{ status.id }}">{{ status.name }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="staffSkill">Skill</label>
+     <div class="staffSkill" >
+            <button  class="btn"> Add</button>
+            <!-- ----------------------------------------------------- -->
+            <!-- ----------------------------------------------------- -->
+            <!-- ----------------------------------------------------- -->
+            <!-- <mat-chip-list aria-label="Fish selection">
+              <mat-chip>One fish</mat-chip>
+              <mat-chip>Two fish</mat-chip>
+              <mat-chip color="primary" selected>Primary fish</mat-chip>
+              <mat-chip color="accent" selected>Accent fish</mat-chip>
+            </mat-chip-list> -->
+            <!-- //////////////////////////////////////////////// -->
+            <mat-form-field class="example-chip-list">
+              <mat-label>Skill</mat-label>
+              <mat-chip-list #chipList aria-label="Fruit selection" name="skills"  [(ngModel)]="data.item.skills">
+                <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                         [removable]="removable" (removed)="remove(fruit)">
+                  {{fruit.name}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="New skill..."
+                       [matChipInputFor]="chipList"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       (matChipInputTokenEnd)="add($event)">
+              </mat-chip-list>
+            </mat-form-field>
+            <!-- ----------------------------------------------------- -->
+            <!-- ----------------------------------------------------- -->
+            <!-- ----------------------------------------------------- -->
+     </div>
+    </div>
+    <div class="form-group">
+      <label for="staffDATG">Dự án tham gia</label>
+      <input type="text" [disabled]="!data.item.id ? true : null" class="form-control" name="join_projects"  [(ngModel)]="data.item.join_projects" id="staffDATG">
+    </div>
+    <div class="form-group">
+      <div mat-dialog-actions style="align-self: center; justify-content: center;display: flex;">
+        <button class="btn btn-primary" (click)="close()"><i class="far fa-save"></i> Submit</button>
+        <button mat-button mat-dialog-close class="btn btn-deny" (click)="close()"><i class="fas fa-window-close"></i>Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+

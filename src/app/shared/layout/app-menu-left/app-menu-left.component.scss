@@ -1,0 +1,35 @@
+.form-menu-left{
+  font-family: "Roboto";
+  ol{
+    list-style-type: none;
+    background-color: white;
+    li{
+      cursor: pointer;
+      width: 100%;
+      border: none;
+    }
+    li:active{
+      color:#fc7b27;
+      border: none;
+    }
+  }
+  .item-parent{
+    background-color:#e8e8e8;
+    font-weight: 500;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 5px;
+  }
+  .itemChild{
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+  }
+  .itemChild:hover{
+    color:#fc7b27
+  }
+  .itemChild:focus{
+    outline: none !important;
+  }
+}
+

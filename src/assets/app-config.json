@@ -1,0 +1,37 @@
+{
+  "dev": {
+    "api": {
+      "baseUrl": "http://qlda.miraisoft.com.vn/api/",
+      "notifyUrl": "http://127.0.0.1:8080/notify/"
+    },
+    "firebase": {
+      "apiKey": "AIzaSyA66eBE0jgCC58YBWdqb_Em9dhOsWJ0msI",
+      "authDomain": "rao-vat-miraisoft.firebaseapp.com",
+      "databaseURL": "https://rao-vat-miraisoft.firebaseio.com",
+      "projectId": "rao-vat-miraisoft",
+      "storageBucket": "rao-vat-miraisoft.appspot.com",
+      "messagingSenderId": "843101426914",
+      "appId": "1:843101426914:web:b19540c64df2f9cfc73abb",
+      "measurementId": "G-BJXR586K2V"
+    },
+    "providersSocial": {
+      "GOOGLE": "GOOGLE",
+      "FACEBOOK": "FACEBOOK"
+    }
+  },
+  "test": {
+    "api": {
+      "baseUrl": "http://google.com"
+    }
+  },
+  "stag": {
+    "api": {
+      "baseUrl": "http://google.com"
+    }
+  },
+  "prod": {
+    "api": {
+      "baseUrl": "http://viethoa.miraisoft.com.vn/api/"
+    }
+  }
+}

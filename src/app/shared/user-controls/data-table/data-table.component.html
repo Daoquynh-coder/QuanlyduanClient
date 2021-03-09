@@ -1,0 +1,165 @@
+<div class="user-control control-table">
+  <div>
+    <div class="row" style="padding: 15px 0;" *ngIf="searchControl.enable || show.record">
+      <div class="col-8 col-md-8">
+        <div class="search-container" *ngIf="searchControl.enable">
+          <div class="label">
+            <label class="search-label" translate>{{searchControl.label}}</label>
+          </div>
+          <div class="input">
+            <div class="container-autocomplete">
+              <div class="input-group mb-3 round-div-25" [style.width]="'300px'">
+                <div class="input-group-prepend">
+                  <div class="input-group-text fa fa-search ic-inside-autocomplete" id="basic-addon1"></div>
+                </div>
+                <input (keyup)="onSearchOnTableEvent($event)" [style.background]="'transparent'"
+                  [placeholder]="searchControl.placeholder | translate" type="text"
+                  class="form-control border-left-0 no-focus typeahead-config" [(ngModel)]="searchModel" maxlength="255"
+                  style="font-size:15px" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin: 10px 0 0 0;" *ngIf="show.record">Tổng số {{itemsCount}} nhân viên.</p>
+      </div>
+      <div class="col-4 col-md-4 col-remove-padding-left">
+        <!-- start N11PIMS-1292 -->
+        <span style="  float: left; margin: 10px 10px 0 10px;" *ngIf="show.detail">Hiển thị </span>
+        <!-- <select2 class="data-page-select" *ngIf="displayItem && !isError&&show.detail"
+          [value]="paginationSettings.numberItemPerPage" [data]="numberItemsPerPageOptions" width="192px"
+          [options]="selectOptions" (valueChanged)="onNumberItemPerPageClicked($event.value)">
+        </select2> -->
+        <div class="form-group">
+          <select class="data-page-select form-control" #selectPerPage
+            [(ngModel)]="paginationSettings.numberItemPerPage" (change)="_refreshDatasource(true,true)">
+            <option *ngFor="let item of numberItemsPerPageOptions" [value]="item.id">{{item.text}}</option>
+          </select>
+        </div>
+
+        <!-- end N11PIMS-1292 -->
+      </div>
+    </div>
+  </div>
+
+  <div [class.zui-wrapper]="enableScrollBar">
+    <div [class.zui-scroller]="enableScrollBar" class="control-table-inner">
+      <table class="table table-bordered" [class.zui-table]="enableScrollBar">
+        <thead>
+          <tr>
+            <th *ngIf="enableShowNumber" style="text-align: center;width:50px;">
+              <span translate class="text-uppercase"><button><a>STT</a></button></span>
+            </th>
+
+            <ng-container *ngIf="!displaySort;else offSort">
+              <th *ngFor="let name of internalColumnTitles; index as id" [style.width]="columnWidths[id]">
+                <button (click)='onColumnSorted(id)' style="width: 100%">
+                  <a [ngSwitch]='sortStates[id]'>
+                    <span [innerHTML]="name | translate" class="text-uppercase"></span>
+                    <!-- <i
+                      [ngClass]="{'fas fa fa-sort':sortStates[id] == 0,'fas fa fa-sort-up':sortStates[id] == 1,'fas fa fa-sort-down':sortStates[id] == 2}"></i> -->
+                    <i *ngSwitchCase='-1' class="fas fa fa-sort float-right" style="color:#acacac"></i>
+                    <i *ngSwitchCase='0' class="fas fa fa-sort-up float-right" style="color:green"></i>
+                    <i *ngSwitchCase='1' class="fas fa fa-sort-down float-right" style="color:green"></i>
+                    <!-- <i *ngSwitchDefault class="fas fa fa-sort-down float-right" style="color:#acacac"></i> -->
+                  </a></button>
+              </th>
+            </ng-container>
+            <ng-template #offSort>
+              <th *ngFor="let name of internalColumnTitles; index as id" [style.width]="columnWidths[id]">
+                <span [innerHTML]="name | translate" class="text-uppercase"></span>
+              </th>
+            </ng-template>
+
+            <th *ngIf="actions.view || actions.edit || actions.delete" style="text-align: center; width: 120px;">
+              <span translate class="text-uppercase">THAO TÁC</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="internalDataSource?.length <=0" class="align-center">
+            <td style="border-right:none"></td>
+            <td [colSpan]="columnDisplayFields.length" style="border-right-width: 0px;border-left:none ">
+              <div style="text-align: center">{{'Không có bản ghi nào'| translate}}</div>
+            </td>
+            <td [class.zui-sticky-col1]="enableScrollBar" style="border-left-width: 0px;">
+            </td>
+          </tr>
+          <tr class="tr-selected" *ngFor="let item of internalDataSource;let i = index" (click)="setClickedRow(i)"
+            [class.active]="i == selectedRow" (click)="onActionClickItem(item)">
+            <td *ngIf="enableShowNumber" style="text-align: center ;padding-top:12px">
+              {{ (paginationSettings.currentPage-1)*paginationSettings.numberItemPerPage+ i+1}}
+            </td>
+            <td *ngFor="let attribute of columnDisplayFields">
+              <div ngbTooltip="{{tooltipContent}}" class="columnDisplayFields"
+                [innerHTML]="converter ? converter(attribute, item[attribute]) : item[attribute]"></div>
+            </td>
+            <td [class.zui-sticky-col]="enableScrollBar" *ngIf="actions.view || actions.edit || actions.delete">
+              <div class="action-button">
+                <button *ngIf="actions.view" (click)="onViewItem(item)">
+                  <i class="fas fa-eye" style="color:#f2724f"></i>
+                </button>
+                <button *ngIf="actions.edit" (click)="onEditItem(item)">
+                  <!-- <i style="color:#d5b500"></i> -->
+                  <i class="fas fa-wrench" style="color: #2e62cb"></i>
+                </button>
+                <button *ngIf="actions.delete" (click)="onDeleteItem(item)">
+                  <!-- <i ></i> -->
+                  <i class="fas fa-trash-alt" style="color:#ff0909"></i>
+                </button>
+                <button *ngIf="actions.search" (click)="onSearchItem(item)">
+                  <i style="color:#4d4d4d"></i>
+                </button>
+                <button *ngIf="actions.report" (click)="onReportItem(item)">
+                  <i style="color:#dcc440"></i>
+                </button>
+
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="align-right" *ngIf="!isError && show.page">
+      <ul class="pagination">
+
+        <li>
+          <button [disabled]="!isPaging(1)" (click)="onPageLaunched(0)" [ngClass]="!isPaging(1) ? 'disable-style' : ''">
+            <div>&lt;&lt;</div>
+          </button>
+        </li>
+        <li>
+          <button [disabled]="!isPaging(1)" (click)="onPageLaunched(1)" [ngClass]="!isPaging(1) ? 'disable-style' : ''">
+            <div>&lt;</div>
+          </button>
+        </li>
+        <li [class]="convertToClass(-1)">
+          <button (click)="onPageLaunched(2)">
+            <div>{{paginationSettings.centerDisplayedPage - 1}}</div>
+          </button>
+        </li>
+        <li [class]="convertToClass(0)">
+          <button *ngIf="paginationSettings.totalPages > 1" (click)="onPageLaunched(3)">
+            <div>{{paginationSettings.centerDisplayedPage}}</div>
+          </button>
+        </li>
+        <li [class]="convertToClass(1)">
+          <button *ngIf="paginationSettings.totalPages > 2" (click)="onPageLaunched(4)">
+            <div>{{paginationSettings.centerDisplayedPage + 1}}</div>
+          </button>
+        </li>
+        <li>
+          <button [disabled]="!isPaging(paginationSettings.totalPages)" (click)="onPageLaunched(5)"
+            [ngClass]="!isPaging(paginationSettings.totalPages) ? 'disable-style' : ''">
+            <div>&gt;</div>
+          </button>
+        </li>
+        <li>
+          <button [disabled]="!isPaging(paginationSettings.totalPages)" (click)="onPageLaunched(6)"
+            [ngClass]="!isPaging(paginationSettings.totalPages) ? 'disable-style' : ''">
+            <div>&gt;&gt;</div>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

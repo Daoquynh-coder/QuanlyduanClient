@@ -1,0 +1,215 @@
+<header *ngIf="item">
+  <div class="container-fluid mt-2 mb-2">
+    <div class="row">
+      <div class="col-sm-1" style="align-self: center;">
+        <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="John Doe" class="mr-3 rounded-circle" style="width:55px;">
+      </div>
+      <div class="col-sm-6 titleProject" style="align-self: center;">
+        <h3 class="titleProject">{{ item.name }}</h3>
+      </div>
+      <div class="col-sm-2" style="align-self: center;">
+        <div style="border: 1px solid;justify-content: center; display: flex;">
+          {{  item.type_name }}
+        </div>
+      </div>
+      <div class="col-sm-2" style="align-self: center;">
+        <div style="justify-content: center; display: flex;" [style.background]="item.status == 'Closed' ? '#eae8e8' : item.status == 'In progress' ? '#78d478' : null">
+          {{  item.status }}
+        </div>
+      </div>
+      <div class="col-sm-1">
+        <button class="buttonMenu" mat-button [matMenuTriggerFor]="menu">
+          <span class="material-icons">
+            more_vert
+          </span>
+        </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="updateProject(item)">
+               <i class="far fa-edit text-primary"></i> Sửa dự án
+            </button>
+            <button mat-menu-item (click)="deleteProject(item.id)">
+              <i  class="far fa-trash-alt text-danger"></i>
+              Xóa dự án
+            </button>
+          </mat-menu>
+      </div>
+    </div>
+  </div>
+  <hr>
+</header>
+<tbody *ngIf="item" class="container-fluid" style="background-color: white;width:100%; float:left">
+
+ <div class="container-fluid" style="padding: 0px;">
+  <h5 style="margin-top: 20px;">Description</h5>
+  <p>{{item.description}}</p>
+
+  <table class="table table-borderless " style="font-family: revert !important; border: none;">
+    <thead>
+      <tr class="text-align">
+        <th scope="col">Total effort</th>
+        <th scope="col">Unit price</th>
+        <th scope="col">Total money</th>
+        <th scope="col">Start date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-align" *ngFor="let format of formatsDateTest">
+        <td>{{ item.size }} MMs</td>
+        <td>{{ item.unit_price | number  }} VND</td>
+        <td>{{ item.total | number }} VND</td>
+        <td>{{ item.start_date | date: format }}</td>
+      </tr>
+    </tbody>
+  </table>
+ </div>
+<!-- ---------------------------------------------------------------------------------- -->
+<!-- ----------------------------------TABLE 1  Estimation----------------------------- -->
+<!-- ---------------------------------------------------------------------------------- -->
+  <div>
+    <div class="container-fluid">
+      <div class="row" style="border: 1px solid;height: 35px;">
+        <div class="col-sm-2" style="align-self: center;" > <b>Estimation ({{ lengthEstimation }})</b></div>
+        <div class="col-sm-10" style="align-self: center;" >
+          <button type="button" class="btn" (click)="openEstimation()">
+            <i class="fa fa-plus" aria-hidden="true" style="color: #28a745;"></i>
+          </button>
+          <!-- Modal -->
+          <!-- <app-estimation [itemEst]="estimation" [projectId]="currentItem" (estimationRequest) ="estimationRequest()"></app-estimation> -->
+            </div>
+      </div>
+      <div class="row">
+         <table class="table">
+          <thead style=" background-color: #e0dfdd85; height: 20px;">
+            <tr>
+              <th scope="col">STT</th>
+              <th scope="col">Name</th>
+              <th class="right" scope="col">Date</th>
+              <th class="right"scope="col">Effort</th>
+              <th class="right" scope="col">Unit Price</th>
+              <th class="right" scope="col">Money (VND)</th>
+              <th class="action" scope="col"> <i class="fa fa-caret-down" aria-hidden="true"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let estimation of estimation; let i = index " >
+              <td class="index"  >{{ i + 1 }}</td>
+              <td class="name">{{ estimation.name }}</td>
+              <td class="right" *ngFor="let format of formatsDateTest">{{ estimation.date | date: format }}</td>
+              <td class="right">{{ estimation.effort  }}</td>
+              <td class="right">{{ estimation.unit_price | number }}</td>
+              <td class="right">{{ estimation.total | number }}</td>
+              <td class="icon" >
+                <button type="button" class="btn" (click)="updateEstimation(estimation)" data-toggle="modal" >
+                  <i class="fas fa-wrench" style="color: black;"></i>
+                </button>
+                <button type="button" class="btn" data-toggle="modal" (click)="deleteRow(estimation.id)" >
+                  <i class="fas fa-trash-alt" style="color: rgb(230, 49, 36);"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+<!-- --------------------------------------------------------------------------------------------------- -->
+<!-- ---------------------------------TABLE 2 Deadlines ------------------------------------------------ -->
+<!-- --------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------- -->
+<div>
+  <div class="container-fluid mt-3" >
+    <div class="row" style="border: 1px solid;height: 35px;">
+      <div class="col-sm-2" style="align-self: center;" > <b>Deadlines ({{ lengthDeadlines }})</b></div>
+      <div class="col-sm-10" style="align-self: center;" >
+        <button type="button" class="btn" (click)="openDeadlines()">
+          <i class="fa fa-plus" aria-hidden="true" style="color: #28a745;"></i>
+        </button>
+        <!-- Modal -->
+        <!-- <app-deadlines-add-table [projectId]="currentItem"></app-deadlines-add-table> -->
+         </div>
+    </div>
+    <div class="row">
+      <table class="table ">
+        <thead style=" background-color: #e0dfdd85; height: 20px;">
+          <tr>
+            <th scope="col">STT</th>
+            <th class="name" scope="col">Name</th>
+            <th class="right" scope="col">Deadline Date</th>
+            <th class="status"scope="col">Status</th>
+            <th class="pic" scope="col">PIC</th>
+            <th class="action" scope="col"> <i class="fa fa-caret-down" aria-hidden="true"></i></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let deadlines of deadlines ; let i = index" [style.color]="deadlines.status_name == 'Closed' ? 'red' : null" >
+            <td class="index" >{{ i + 1 }}</td>
+            <td class="name" >{{ deadlines.name }}</td>
+            <td class="right" *ngFor="let format of formatsDateTest">{{ deadlines.date | date: format }}</td>
+            <td class="status" >{{ deadlines.status_name }}</td>
+            <td class="pic">{{ deadlines.pic }}</td>
+            <td class="icon"  >
+              <button type="button" class="btn" (click)="updateDeadlines(deadlines)" data-toggle="modal" >
+                <i class="fas fa-wrench" style="color: black;"></i>
+              </button>
+              <button type="button" class="btn" data-toggle="modal" (click)="deleteDeadlinesRow(deadlines.id)" >
+                <i class="fas fa-trash-alt" style="color: rgb(230, 49, 36);"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- -----------------------------------------------------------------------------------------------  -->
+<!-- ----------------------------------TABLE 3 Resources--------------------------------------------  -->
+<!-- -----------------------------------------------------------------------------------------------  -->
+<div>
+  <div class="container-fluid mt-2">
+    <div class="row" style="border: 1px solid;height: 35px;">
+      <div class="col-sm-2" style="align-self: center;" ><b>Resources ({{ lengthResources }})</b> </div>
+      <div class="col-sm-10" style="align-self: center;" >
+        <button type="button" class="btn" (click)="openRecources()">
+          <i class="fa fa-plus" aria-hidden="true" style="color: #28a745;"></i>
+        </button>
+        <!-- Modal -->
+        <!-- <app-resources-add-table></app-resources-add-table> -->
+      </div>
+    </div>
+    <div class="row">
+      <table class="table ">
+        <thead style=" background-color: #e0dfdd85; height: 20px;">
+          <tr>
+            <th class="index" scope="col">STT</th>
+            <th class="name" scope="col">Name</th>
+            <th class="end" scope="col">Start date</th>
+            <th class="end" scope="col">End date</th>
+            <th class="end" scope="col">Busy rate</th>
+            <th class="center" scope="col">Status</th>
+            <th class="action" scope="col"> <i class="fa fa-caret-down" aria-hidden="true"></i></th>
+          </tr>
+        </thead>
+         <tbody>
+          <tr *ngFor="let resources of resources; let i = index">
+            <td class="index" >{{ i + 1 }}</td>
+            <td class="name3">{{ resources.user_name }}</td>
+            <td class="end" *ngFor="let format of formatsDateTest">{{ resources.start_date | date: format }}</td>
+            <td class="end" *ngFor="let format of formatsDateTest"> {{ resources.end_date | date: format }}</td>
+            <td class="end">{{ resources.busy_rate }} %</td>
+            <td class="center">{{ resources.status =='1'? 'In': 'Out'}}</td>
+            <td class="icon" [style.display]=" resources.status == '1' ? '' : 'none'">
+              <button type="button" class="btn" data-toggle="modal" (click)="updateRecources(resources)">
+                <i class="fas fa-wrench" style="color: black;"></i>
+              </button>
+              <button type="button" class="btn" data-toggle="modal" (click)="deleteRecourcesRow(resources.id)" >
+                <i class="fas fa-trash-alt" style="color: rgb(230, 49, 36);"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</tbody>
