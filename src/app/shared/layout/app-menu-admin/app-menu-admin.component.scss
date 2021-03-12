@@ -1,61 +1,61 @@
-span.username:hover {
-  color: #fc7b27 !important;
-}
-.mat-container {
-  mat-drawer-content {
-    flex-direction: column;
-    min-height: 90vh;
-  }
+// span.username:hover {
+//   color: #fc7b27 !important;
+// }
+// .mat-container {
+//   mat-drawer-content {
+//     flex-direction: column;
+//     min-height: 90vh;
+//   }
 
-  a {
-    padding: 8px 8px 8px 10px;
-    text-decoration: none;
-    font-size: 16px;
-    color: black;
-    display: block;
-    transition: 0.1s;
-  }
-  a:hover {
-    color: #fc7b27;
-  }
-  .active {
-    color: #fc7b27 !important;
-  }
-  button {
-    border: none;
-    display: flex;
-  }
-  button.bg-dark:focus {
-    background-color: transparent !important;
-  }
-  button.bg-dark:hover {
-    background-color: transparent !important;
-    color: #fc7b27 !important;
-  }
-  .mat-tree-node {
-    cursor: pointer;
-    font-size: 16px;
-    color: #ffffff;
-  }
-  .mat-tree-node:focus {
-    outline: none;
-  }
-  .mat-tree-node:hover {
-    color: #fc7b27 !important;
-  }
-}
+//   a {
+//     padding: 8px 8px 8px 10px;
+//     text-decoration: none;
+//     font-size: 16px;
+//     color: black;
+//     display: block;
+//     transition: 0.1s;
+//   }
+//   a:hover {
+//     color: #fc7b27;
+//   }
+//   .active {
+//     color: #fc7b27 !important;
+//   }
+//   button {
+//     border: none;
+//     display: flex;
+//   }
+//   button.bg-dark:focus {
+//     background-color: transparent !important;
+//   }
+//   button.bg-dark:hover {
+//     background-color: transparent !important;
+//     color: #fc7b27 !important;
+//   }
+//   .mat-tree-node {
+//     cursor: pointer;
+//     font-size: 16px;
+//     color: #ffffff;
+//   }
+//   .mat-tree-node:focus {
+//     outline: none;
+//   }
+//   .mat-tree-node:hover {
+//     color: #fc7b27 !important;
+//   }
+// }
 
-.sidenav-content {
-  float: left;
-}
-.sidenav {
-  padding: 10px 0px;
-  width: 18%;
-}
-.header-dropdown {
-  color: #ffffff;
-  cursor: pointer;
-}
-.mat-tree {
-  font-family: revert!important;
-}
+// .sidenav-content {
+//   float: left;
+// }
+// .sidenav {
+//   padding: 10px 0px;
+//   width: 18%;
+// }
+// .header-dropdown {
+//   color: #ffffff;
+//   cursor: pointer;
+// }
+// .mat-tree {
+//   font-family: revert!important;
+// }

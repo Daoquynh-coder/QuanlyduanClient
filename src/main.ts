@@ -4,10 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { enableProdMode } from '@angular/core';
-import { AppModule } from './app/app.module';
 import { environment } from '@env/environment';
 import { DeadlinesCalendarComponent } from '@app/admin/deadlines-calendar/deadlines-calendar.component';
 import { DeadlinesCalendarModule } from '@app/admin/deadlines-calendar/deadlines-calendar.module';
+import { AppModule } from '@app/app.module';
+
+
 
 @NgModule({
   imports: [BrowserModule, BrowserAnimationsModule, DeadlinesCalendarModule],
@@ -15,16 +17,6 @@ import { DeadlinesCalendarModule } from '@app/admin/deadlines-calendar/deadlines
 })
 export class BootstrapModule {}
 
-// platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
-//   // Ensure Angular destroys itself on hot reloads.
-//   if (window['ngRef']) {
-//     window['ngRef'].destroy();
-//   }
-//   window['ngRef'] = ref;
-
-//   // Otherwise, log the boot error
-// }).catch(err => console.error(err));
-// --------------------//
 if (environment.production) {
   enableProdMode();
 }

@@ -25,6 +25,7 @@ import { DeadlinesCalendarComponent } from './deadlines-calendar/deadlines-calen
 import { DeadlinesCalendarModule } from './deadlines-calendar/deadlines-calendar.module';
 
 
+
 @NgModule({
   imports: [
     CommonModule,

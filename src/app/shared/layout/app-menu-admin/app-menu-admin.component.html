@@ -1,50 +1,30 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-  <div style="display: contents;">
-    <a class="navbar-brand mr-1" [routerLink]="['/admin']" style="margin-right: 18px !important;">
-     <h1> A D M I N</h1>
-    </a>
-    <button mat-raised-button (click)="drawer.toggle()" style="background-color: transparent;border: 0;color: #fff;">
-      <i class="fas fa-bars" style="font-size: 30px;"></i>
-    </button>
+<div class="wrapper container-fluid">
+  <div class="sidebar" data-color="white" data-active-color="danger">
+      <sidebar-cmp></sidebar-cmp>
   </div>
+  <div class="main-panel">
+    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand justify-content-end static-top" style="width: 1390px;">
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></form>
 
-  <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></form>
-  <div class="header-dropdown" [matMenuTriggerFor]="menu" #menuTriggerInfo="matMenuTrigger">
-    <i class="fas fa-user-circle fa-fw" style="font-size: 30px;"></i>
-    <span *ngIf="credentials?.username" class="mr-1 username">{{' '+credentials.username}}</span>
+            <div class="header-dropdown container-fluid " style="justify-content: flex-end;" [matMenuTriggerFor]="menu" #menuTriggerInfo="matMenuTrigger">
+                <i class="nc-icon nc-single-02" style="font-size: 30px;"></i>
+
+              <!-- <span *ngIf="credentials?.username" class="mr-1 username">{{' '+credentials.username}}</span> -->
+            </div>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <span mat-menu-item (click)="signOut()" style="font-family: revert !important;"> <i class="fas fa-sign-out-alt"></i> Đăng xuất</span>
+            </mat-menu>
+          </nav>
+        </div>
+      </div>
+    </nav>
+      <div class="content">
+          <router-outlet></router-outlet>
+      </div>
+      <!-- <footer-cmp></footer-cmp> -->
   </div>
-  <mat-menu #menu="matMenu" xPosition="before">
-    <!-- <div *ngIf="credentials.role_id === 1">
-      <span mat-menu-item [routerLink]="['/thong-tin-ca-nhan']">Thông tin cá nhân</span>
-      <span mat-menu-item [routerLink]="['/thong-tin-ca-nhan/1']">Thay đổi mật khẩu</span>
-      <hr>
-    </div> -->
-    <!-- <span mat-menu-item style="font-family: revert !important;">Trợ giúp</span> -->
-    <span mat-menu-item (click)="signOut()" style="font-family: revert !important;"> <i class="fas fa-sign-out-alt"></i> Đăng xuất</span>
-  </mat-menu>
-</nav>
-
-<mat-drawer-container class="mat-container">
-  <mat-drawer #drawer class="sidenav bg-dark" mode="side" opened>
-    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="bg-dark">
-      <mat-tree-node routerLink="{{node.link}}" routerLinkActive="active" *matTreeNodeDef="let node" matTreeNodePadding>
-        {{node.name}}
-      </mat-tree-node>
-      <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding class="text-light">
-        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name" class="text-light bg-dark">
-          <mat-icon class="mat-icon-rtl-mirror" id="mat-icons">
-            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-          </mat-icon>
-          {{node.name}}
-        </button>
-      </mat-tree-node>
-    </mat-tree>
-  </mat-drawer>
-  <mat-drawer-content>
-    <!-- <button mat-raised-button (click)="drawer.toggle()">&#9776;</button> -->
-    <router-outlet class="text-center"
-      *ngIf="authenticationService.credentials && authenticationService.credentials.role_id !== 2">
-    </router-outlet>
-  </mat-drawer-content>
-
-</mat-drawer-container>
+</div>
+<!-- <fixedplugin-cmp></fixedplugin-cmp> -->

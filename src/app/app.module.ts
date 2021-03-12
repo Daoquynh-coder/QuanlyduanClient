@@ -28,8 +28,8 @@ import { FullLayoutComponent, SimpleLayoutComponent } from "./shared/containers"
 const APP_CONTAINERS = [FullLayoutComponent, SimpleLayoutComponent];
 
 // Import components common main-page-layout
-import { AppFooterComponent, AppHeaderComponent } from "./shared/layout";
-const APP_COMPONENTS = [AppFooterComponent, AppHeaderComponent];
+import { AppFooterComponent } from "./shared/layout";
+const APP_COMPONENTS = [AppFooterComponent];
 const appConfigServiceInitFactory = (appConfig: AppConfigService) => {
   return () => {
     return appConfig.loadAppConfig();
@@ -47,9 +47,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AppRoutes } from './app.routing';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
+    RouterModule.forRoot(AppRoutes,{
+      useHash: true
+    }),
     NguCarouselModule,
     ServiceWorkerModule.register("/ngsw-worker.js", { enabled: false }),
     FormsModule,
@@ -80,6 +86,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     // HighchartsChartComponent,
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
+    DashboardComponent,
   ],
   exports: [...APP_COMPONENTS],
   providers: [

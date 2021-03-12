@@ -3,7 +3,7 @@
   <p class="navbar-brand" href="#">{{ data.item.id ? ' Update nhân viên' : 'Add nhân viên' }}</p>
 </nav>
 <div mat-dialog-content id="staffAddNew">
-  <form class="needs-validation"  (ngSubmit)="onSubmit()">
+  <form class="needs-validation">
     <div class="form-group">
       <label for="staffUsername">username</label>
       <input type="text" class="form-control"  name="staffUsername"  [(ngModel)]="data.item.username" id="staffUsername" required>
@@ -67,7 +67,7 @@
     </div>
     <div class="form-group">
       <div mat-dialog-actions style="align-self: center; justify-content: center;display: flex;">
-        <button class="btn btn-primary" (click)="close()"><i class="far fa-save"></i> Submit</button>
+        <button class="btn btn-primary" (click)="onSubmit()"><i class="far fa-save"></i> Submit</button>
         <button mat-button mat-dialog-close class="btn btn-deny" (click)="close()"><i class="fas fa-window-close"></i>Cancel</button>
       </div>
     </div>

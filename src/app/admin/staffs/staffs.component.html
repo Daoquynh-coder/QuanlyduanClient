@@ -7,15 +7,12 @@
 <div class="container-fluid mt-3">
 
   <div class="body mt-2" style="background-color: white;" >
-    <!-- <app-table [dataHeader]="header" [dataTable]="staff" [actions]="actions" [paginationSettings]="paginationSettings"
-      [itemsCount]="itemsCount"  style=" width: 100%" (onActionEdit)="updateStaff($event)" (onAction)="deleteStaff($event)">
-    </app-table> -->
     <span>Tổng số {{ length }} nhân viên.</span>
     <div class="mat-elevation-z8">
       <mat-table matSort  [dataSource]="listData" [ngClass]="'table-bordered'">
         <ng-container matColumnDef="fullName">
           <mat-header-cell [ngClass]="'w-75'" *matHeaderCellDef >STT</mat-header-cell>
-          <mat-cell style=" justify-content: center;" [ngClass]="'w-75'" *matCellDef="let element; let i = index;">{{ i + 1}}</mat-cell>
+          <mat-cell style=" justify-content: center;" [ngClass]="'w-75'" *matCellDef="let element; let i = index;">{{this.paginator.pageIndex * this.paginator.pageSize + i + 1}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="Tk">
           <mat-header-cell [ngClass]="'mat-tk'" *matHeaderCellDef mat-sort-header>TK</mat-header-cell>

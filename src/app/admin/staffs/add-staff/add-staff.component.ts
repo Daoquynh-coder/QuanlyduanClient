@@ -75,21 +75,22 @@ export class AddStaffComponent implements OnInit {
     }
 
   ngOnInit() {
-
-    this.getProjectViewService.getMasterStatusUser().subscribe((res: any) =>{
-     this.status = res.data
-     console.log(res.data)
-    })
-
-    this.getProjectViewService.getMasterSkillUser().subscribe((res: any) =>{
-      this.skill = res.data
-      console.log(res.data)
-    })
-    console.log(this.data.item.id)
+   this.onLoad()
   }
 
+  onLoad(){
+    this.getProjectViewService.getMasterStatusUser().subscribe((res: any) =>{
+      this.status = res.data
+      console.log(res.data)
+     })
+
+     this.getProjectViewService.getMasterSkillUser().subscribe((res: any) =>{
+       this.skill = res.data
+       console.log(res.data)
+     })
+     console.log(this.data.item.id)
+  }
  onSubmit(){
-  // this.submitted = true;
   if(!this.data.item.id){
     console.log('123456',this.data.item)
     this.getProjectViewService.getUser(this.data.item).subscribe(
@@ -97,7 +98,8 @@ export class AddStaffComponent implements OnInit {
         console.log('333',res)
         if(res.status) {
           this.toastrService.info('Thêm mới thành công', '');
-          // this.router.navigate(['/admin/danh-sach-du-an'])
+          this.dialogRef.close()
+          this.onLoad()
         }
       },
       err => {
@@ -110,7 +112,7 @@ export class AddStaffComponent implements OnInit {
        if(res.status ) {
           this.toastrService.info('Sửa thành công!', '');
           this.dialogRef.close(true)
-          // this.router.navigate(['/admin/danh-sach-du-an'])
+          this.onLoad()
         } else {
           this.toastrService.info(res.message, '');
         }

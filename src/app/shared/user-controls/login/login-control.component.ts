@@ -5,7 +5,6 @@ import { finalize, first } from "rxjs/operators";
 import { TranslateService } from "@ngx-translate/core";
 import { environment } from "@env/environment";
 import { Logger, I18nService, AuthenticationService } from "@app/core";
-import { AppHeaderComponent } from "../../layout";
 import { ToastrService } from "ngx-toastr";
 import { UtilityService } from "../../../core/services/utility.service";
 import { MatDialog } from "@angular/material/dialog";
@@ -176,7 +175,6 @@ export class LoginControlComponent implements OnInit, OnDestroy {
             this.authenticationService.onAuth(true);
             this.authenticationService.decodeTokenToServer(res.token)
             this.toastr.success("Đăng nhập thành công", "");
-            // AppHeaderComponent.updateUserStatus.next(true);
             this.router.navigate['/'];
           } else {
             this.toastr.error(res.message, '')

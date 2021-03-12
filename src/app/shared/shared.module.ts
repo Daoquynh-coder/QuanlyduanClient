@@ -28,6 +28,8 @@ import { AppMenuAdminComponent } from "./layout/app-menu-admin/app-menu-admin.co
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatTreeModule } from "@angular/material/tree";
 import { MatIconModule } from "@angular/material/icon";
+import { SidebarCmpComponent } from './sidebar-cmp/sidebar-cmp/sidebar-cmp.component';
+import { NavbarComponent } from './navbar/navbar/navbar.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -62,6 +64,8 @@ import { MatIconModule } from "@angular/material/icon";
     AppTableComponent,
     PanigationComponent,
     AppMenuAdminComponent,
+    SidebarCmpComponent,
+    NavbarComponent,
   ],
   exports: [
     LoaderComponent,

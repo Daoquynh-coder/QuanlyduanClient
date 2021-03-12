@@ -4,151 +4,41 @@ import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView} from 'angular-calendar';
 import { GetProjectViewService } from '@app/core/services/get-project-view.service';
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
-};
+
+import { CalendarOptions } from '@fullcalendar/angular'; // useful for typechecking
 @Component({
   selector: 'app-deadlines-calendar',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './deadlines-calendar.component.html',
   styleUrls: ['./deadlines-calendar.component.scss']
 })
-export class DeadlinesCalendarComponent implements OnInit {
-  @ViewChild('TemplateRef', { static: true }) modalContent: TemplateRef<any>;
-
-  view: CalendarView = CalendarView.Month;
-
-  CalendarView = CalendarView;
-
-  viewDate: Date = new Date();
-
-  modalData: {
-    action: string;
-    event: CalendarEvent;
+export class DeadlinesCalendarComponent implements OnInit  {
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    dateClick: this.handleDateClick.bind(this), // bind is important!
+    events: [
+      // { title: 'event 1', date: '2020-06-27' },
+      // { title: 'event 2', date: '2020-06-30' }
+    ]
   };
 
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-      a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      },
-    },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
-  ];
-
-  refresh: Subject<any> = new Subject();
-
-  events: CalendarEvent[] = [];
-
-  activeDayIsOpen: boolean = true;
-  modal: any;
+  handleDateClick(arg: any) {
+    alert('date click! ' + arg.dateStr)
+  }
 
   constructor( private getProjectViewService: GetProjectViewService) { }
-
-  ngOnInit() {
-    this.activeDayIsOpen = false;
+  ngOnInit(){
+    this.onload()
+  }
+  onload() {
     this.getProjectViewService.getDeadlines().subscribe((res: any) => {
-     console.log('222',res.data)
-     this.events = res.data.map((item: any) => {
+     this.calendarOptions.events = res.data.map((item: any) => {
        return {
-        id: item.id,
-        title: " - Project_code: "+ (!item.project_code ? "null" : item.project_code) + " - Name: "+ item.name  + " - Pic: "+ item.pic ,
-        pic: item.pic,
+        title: (!item.project_code ? "null" : item.project_code) + " - "+ item.name  + " - "+ item.pic ,
         project_code: item.project_code,
-        start: addHours(startOfDay(new Date(item.date)), 2),
-        project_id: item.project_id,
-        status: item.status,
-        action: this.actions,
-        color: colors.blue,
+        date: item.date,
        }
      });
-     console.log('232',this.events)
+     console.log('232',this.calendarOptions.events)
     })
   }
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-      }
-      this.viewDate = date;
-    }
-  }
-
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
-      }
-      return iEvent;
-    });
-    this.handleEvent('Dropped or resized', event);
-  }
-
-  handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
-  }
-
-  // addEvent(): void {
-  //   this.events = [
-  //     ...this.events,
-  //     {
-  //       title: 'New event',
-  //       start: startOfDay(new Date()),
-  //       end: endOfDay(new Date()),
-  //       color: colors.red,
-  //       draggable: true,
-  //       resizable: {
-  //         beforeStart: true,
-  //         afterEnd: true,
-  //       },
-  //     },
-  //   ];
-  // }
-
-  deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
-  }
-
-  setView(view: CalendarView) {
-    this.view = view;
-  }
-
-  closeOpenMonthViewDay() {
-    this.activeDayIsOpen = false;
-  }
-
 }

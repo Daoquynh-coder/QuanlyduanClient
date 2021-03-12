@@ -33,6 +33,9 @@ export class AppMenuAdminComponent implements OnInit{
       link: '',
       children: [
         {
+          name: 'home', link: "/admin/home"
+        },
+        {
           name: 'Danh sách dự án', link: "/admin/danh-sach-du-an"
         },
         {
